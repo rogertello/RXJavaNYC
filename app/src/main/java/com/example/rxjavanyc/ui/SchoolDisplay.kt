@@ -56,15 +56,15 @@ class SchoolDisplay: Fragment(), ListenerInterface.ListClickEvent {
 
     private fun initObservables() {
         viewModel = ViewModelProvider(this, schoolViewModelProvider)[SchoolViewModel::class.java]
-        viewModel.schoolState.observe(viewLifecycleOwner) { uiState: UIState? ->
+        viewModel.schoolState.observe(viewLifecycleOwner) { uiState: UIState ->
             processUIState(
-                uiState!!
+                uiState
             )
         }
     }
 
     private fun processUIState(uiState: UIState) {
-        if (uiState is SchoolResponse) updateAdapter((uiState).data) else if (uiState is Error) uiState.errorMessage?.let {
+        if (uiState is SchoolResponse) updateAdapter(uiState.data) else if (uiState is Error) uiState.errorMessage?.let {
             showError(
                 it
             )

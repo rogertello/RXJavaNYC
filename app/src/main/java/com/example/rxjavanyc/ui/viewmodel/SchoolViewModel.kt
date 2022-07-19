@@ -36,7 +36,7 @@ class SchoolViewModel @Inject constructor(var repository: Repository) : ViewMode
             .subscribe(
                 object : SingleObserver<UIState> {
                     override fun onSubscribe(d: Disposable) {
-                        // dispose any composable...
+
                     }
 
                     override fun onSuccess(uiState: UIState) {
